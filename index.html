@@ -1,7 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Memory Game</title>
-  </head>
-  <body></body>
+    <head>
+        <title>Memory Game</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="screen" id="start-screen">
+            <h1>Memory Game</h1>
+            <h2>Board size:</h2>
+            <select id="size" name="size">
+                <option value="3">3x3</option>
+                <option value="4">4x4</option>
+                <option value="5">5x5</option>
+            </select>
+            <input type="button" class="start-btn" value="Start Game">
+        </div>
+        <div class="screen" id="game-screen">
+            <div class="score">
+                <h1>Score: 0</h1>
+            </div>
+            <div class="container-btn"></div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/animejs/dist/bundles/anime.umd.min.js"></script>
+        <script src="script.js"></script>
+    </body>
 </html>
