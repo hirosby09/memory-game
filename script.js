@@ -1,15 +1,16 @@
 // Get DOM elements
 const startScreen = document.getElementById('start-screen');
 const gameScreen = document.getElementById('game-screen');
-const boardSizeInput = document.getElementById('size'); // Pastikan ID di HTML adalah 'size'
+const boardSizeInput = document.getElementById('size');
 const startBtn = document.querySelector('.start-btn');
 const btnContainer = document.querySelector('.container-btn'); 
-const scoreEl = document.getElementById('score-board'); // Tambahkan elemen skor di HTML jika perlu
+const scoreEl = document.getElementById('score-board');
+const scoreText = document.querySelector('.score-text')
 
 // Game status
 let sequence = [];
 let playerSequence = [];
-let level = 0;
+let level = -1;
 let isGameActive = false;
 let isPlayerTurn = false;
 let buttons = []; // Stores button elements
@@ -51,6 +52,7 @@ function resetGame() {
 // Start next round
 function nextRound() {
     level++;
+    scoreText.innerHTML = `Score: ${level}`
     playerSequence = []; // Reset player input sequence
     isPlayerTurn = false;
     darkenBtns('#BBBBBB')
@@ -120,6 +122,8 @@ startBtn.addEventListener('click', function() {
     // 1. UI setup
     startScreen.style.display = 'none';
     gameScreen.style.display = 'flex';
+    gameScreen.style.height = '625px';
+    gameScreen.style.marginTop = '120px';
     btnContainer.innerHTML = '';
     buttons = [];
 
@@ -131,8 +135,9 @@ startBtn.addEventListener('click', function() {
     btnContainer.style.display = 'grid';
     btnContainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     btnContainer.style.gap = '10px';
-    btnContainer.style.maxWidth = '400px';
     btnContainer.style.margin = '0 auto';
+    btnContainer.style.padding = '10px';
+    btnContainer.style.borderRadius= '15px';
 
     for (let i = 0; i < totalBtn; i++) {
         let btn = document.createElement('div');
